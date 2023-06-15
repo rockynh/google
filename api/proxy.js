@@ -19,12 +19,5 @@ module.exports = (req, res) => {
       //  /backend/user/login => http://google.com/user/login
       //   "^/backend/": "/",
     },
-    selfHandleResponse: true,
-    on: {
-    proxyRes: responseInterceptor(async (responseBuffer, proxyRes, req, res) => {
-      const response = responseBuffer.toString('utf8'); // convert buffer to string
-      return response.replace('search.yahoo.co.jp', 'y.btmd.eu.org'); // manipulate response and return the result
-    }),
-    },
   })(req, res);
 };
