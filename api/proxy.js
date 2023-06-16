@@ -20,8 +20,7 @@ module.exports = (req, res) => {
       //   "^/backend/": "/",
     },
   selfHandleResponse: true, // manually call res.end(); IMPORTANT: res.end() is called internally by responseInterceptor()
-  on: {
-    proxyRes: responseInterceptor(async (buffer, proxyRes, req, res) => {
+  onProxyRes: responseInterceptor(async (buffer, proxyRes, req, res) => {
       const response = buffer.toString('utf8');
       console.log(response); 
       return response.replace('search.yahoo.co.jp', 'y1.michx.cf');
@@ -40,6 +39,5 @@ module.exports = (req, res) => {
         //  return response;
         //}
     }),
-  },
   });
 };
