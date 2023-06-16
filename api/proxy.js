@@ -22,22 +22,23 @@ module.exports = (req, res) => {
   selfHandleResponse: true, // manually call res.end(); IMPORTANT: res.end() is called internally by responseInterceptor()
   on: {
     proxyRes: responseInterceptor(async (buffer, proxyRes, req, res) => {
+      const response = buffer.toString('utf8');
+      return response.replaceAll('search.yahoo.co.jp', 'y1.michx.cf');
       // log original response
       // console.log(`[DEBUG] original response:\n${buffer.toString('utf8')}`);
-      const response = buffer.toString("utf8");
+      //const response = buffer.toString("utf8");
         // modifying html content
-        if (proxyRes.headers["content-type"] && proxyRes.headers["content-type"].includes("text/html")) {
+        //if (proxyRes.headers["content-type"] && proxyRes.headers["content-type"].includes("text/html")) {
             
 
             // do whatever you want
             // html = response.replace('search.yahoo.co.jp', 'y1.michx.cf');
-            return response.replaceAll("search.yahoo.co.jp", "y1.michx.cf");
+          //  return response.replaceAll("search.yahoo.co.jp", "y1.michx.cf");
       
-        } else {
-          return response;
-        }
+        //} else {
+        //  return response;
+        //}
     }),
   },
-
-  })(req, res);
+  }),
 };
