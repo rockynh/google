@@ -29,6 +29,7 @@ module.exports = (req, res) => {
      **/
     on: {
       proxyRes: responseInterceptor(async (responseBuffer, proxyRes, req, res) => {
+        const hostname = req.headers.host;
         const response = responseBuffer.toString('utf8'); // convert buffer to string
         let ct = proxyRes.headers['content-type'];
         //console.log(`ContentType= ${ct}`);
