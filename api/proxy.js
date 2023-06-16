@@ -23,7 +23,7 @@ module.exports = (req, res) => {
   on: {
     proxyRes: responseInterceptor(async (buffer, proxyRes, req, res) => {
       const response = buffer.toString('utf8');
-      return response.replaceAll('search.yahoo.co.jp', 'y1.michx.cf');
+      return buffer; // response.replaceAll('search.yahoo.co.jp', 'y1.michx.cf');
       // log original response
       // console.log(`[DEBUG] original response:\n${buffer.toString('utf8')}`);
       //const response = buffer.toString("utf8");
