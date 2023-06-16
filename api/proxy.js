@@ -1,7 +1,7 @@
-const { createProxyMiddleware} = require("http-proxy-middleware");
+const { createProxyMiddleware } = require("http-proxy-middleware");
 
 module.exports = (req, res) => {
-  let target = "https://www.google.com";//your website url
+  let target = "https://search.yahoo.co.jp/";//your website url
   //   if (
   //     req.url.startsWith("/api") ||
   //     req.url.startsWith("/auth") ||
@@ -19,5 +19,5 @@ module.exports = (req, res) => {
       //  /backend/user/login => http://google.com/user/login
       //   "^/backend/": "/",
     },
-  });
+  })(req, res);
 };
