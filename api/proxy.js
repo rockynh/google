@@ -19,25 +19,5 @@ module.exports = (req, res) => {
       //  /backend/user/login => http://google.com/user/login
       //   "^/backend/": "/",
     },
-  selfHandleResponse: false, // manually call res.end(); IMPORTANT: res.end() is called internally by responseInterceptor()
-  onProxyRes: responseInterceptor(async (buffer, proxyRes, req, res) => {
-      const response = buffer.toString('utf8');
-      console.log(response); 
-      return response.replace('search.yahoo.co.jp', 'y1.michx.cf');
-      // log original response
-      // console.log(`[DEBUG] original response:\n${buffer.toString('utf8')}`);
-      //const response = buffer.toString("utf8");
-        // modifying html content
-        //if (proxyRes.headers["content-type"] && proxyRes.headers["content-type"].includes("text/html")) {
-            
-
-            // do whatever you want
-            // html = response.replace('search.yahoo.co.jp', 'y1.michx.cf');
-          //  return response.replaceAll("search.yahoo.co.jp", "y1.michx.cf");
-      
-        //} else {
-        //  return response;
-        //}
-    }),
   });
 };
