@@ -15,7 +15,6 @@ module.exports = (req, res) => {
     target,
     changeOrigin: true,
     pathRewrite: {
-      '^/api' : '',
       // rewrite request path `/backend`
       //  /backend/user/login => http://google.com/user/login
       //   "^/backend/": "/",
@@ -25,14 +24,14 @@ module.exports = (req, res) => {
     proxyRes: responseInterceptor(async (buffer, proxyRes, req, res) => {
       // log original response
       // console.log(`[DEBUG] original response:\n${buffer.toString('utf8')}`);
-      const response = buffer.toString('utf8');
+      const response = buffer.toString("utf8");
         // modifying html content
-        if (proxyRes.headers['content-type'] && proxyRes.headers['content-type'].includes('text/html')) {
+        if (proxyRes.headers["content-type"] && proxyRes.headers["content-type"].includes("text/html")) {
             
 
             // do whatever you want
             // html = response.replace('search.yahoo.co.jp', 'y1.michx.cf');
-            return response.replaceAll('search.yahoo.co.jp', 'y1.michx.cf');
+            return response.replaceAll("search.yahoo.co.jp", "y1.michx.cf");
       
         } else {
           return response;
