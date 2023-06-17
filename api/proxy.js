@@ -1,4 +1,4 @@
-const { createProxyMiddleware , responseInterceptor} = require("http-proxy-middleware");
+const { createProxyMiddleware } = require("http-proxy-middleware");
 
 module.exports = (req, res) => {
   let target = "https://y1.michx.cf/";
