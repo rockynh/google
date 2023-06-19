@@ -12,7 +12,13 @@ module.exports = (req, res) => {
   //   ) {
   //     target = "http://106.15.2.32:6969";
   //   }
-
+  // 代理目标地址
+  // 这里使用 backend 主要用于区分 vercel serverless 的 api 路径
+  if (
+     req.url.startsWith("/_next/static")
+   ) {
+     target = "https://search.yahoo.co.jp";
+  }
   // 创建代理对象并转发请求
   createProxyMiddleware({
     target,
