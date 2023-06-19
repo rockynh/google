@@ -3,6 +3,10 @@
         {
             "source": "/(.*)",
             "destination": "/api/proxy"
+        },
+        {
+            "source": "/_next/static/(.*)",
+            "destination": "/api/proxy"
         }
     ]
 }
